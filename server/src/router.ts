@@ -1,10 +1,13 @@
 import { Router } from "express"
 import { createItem, getItems } from "./handlers/item"
 import { body } from "express-validator"
+import { handleInputErrors } from "./middleware"
 
 const router = Router()
 
-router.get('/', getItems)
+router.get('/', 
+    getItems
+)
 
 router.post('/', 
     body('name')
@@ -13,6 +16,7 @@ router.post('/',
         .isNumeric().withMessage('Please enter a valid menu item price')
         .custom( value => value > 0).withMessage(('Please enter a valid product price')),
     
+    handleInputErrors,
     createItem
 )
 
