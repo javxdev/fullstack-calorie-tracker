@@ -1,6 +1,6 @@
 import { Router } from "express"
 import { createItem, getItems } from "./handlers/item"
-import { body } from "express-validator"
+import { body, param } from "express-validator"
 import { handleInputErrors } from "./middleware"
 
 const router = Router()
