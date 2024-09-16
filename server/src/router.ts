@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { createItem, getItems } from "./handlers/item"
+import { createItem, deleteItem, getItems } from "./handlers/item"
 import { body, param } from "express-validator"
 import { handleInputErrors } from "./middleware"
 
@@ -20,5 +20,11 @@ router.post('/',
     createItem
 )
 
+router.delete('/:id',
+    param('id').isInt().withMessage('ID not valid'),
+    
+    handleInputErrors,
+    deleteItem
+)
 
 export default router
