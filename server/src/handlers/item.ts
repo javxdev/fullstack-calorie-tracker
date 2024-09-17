@@ -8,7 +8,7 @@ export const createItem = async (req: Request, res: Response) => {
     res.send('FROM CREATE ITEM')
 }
 
-export const updateProduct = async (req : Request, res : Response) => {
+export const updateItem = async (req : Request, res : Response) => {
     res.send('FROM CREATE ITEM')
 }
 
