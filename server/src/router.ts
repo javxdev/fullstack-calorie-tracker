@@ -36,6 +36,21 @@ router.put('/:id',
     updateItem
 )
 
+router.patch('/:id', 
+    param('id').isInt().withMessage('ID not valid'),
+    body('name')
+    .notEmpty().withMessage('The item name must not be empty'),
+        
+    body('price')
+        .isNumeric().withMessage('Please enter a valid item price')
+        .notEmpty().withMessage('The item price must not be empty')
+        .custom( value => value > 0).withMessage('Please enter a valid item price'),
+    body('availability')
+        .isBoolean().withMessage('Availability must be a boolean'),
+    updateAvailability
+
+)
+
 router.delete('/:id',
     param('id').isInt().withMessage('ID not valid'),
     
