@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { createItem, deleteItem, getItems, updateItem } from "./handlers/item"
+import { createItem, deleteItem, getItems, updateAvailability, updateItem } from "./handlers/item"
 import { body, param } from "express-validator"
 import { handleInputErrors } from "./middleware"
 
