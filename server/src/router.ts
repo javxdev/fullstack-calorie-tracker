@@ -32,6 +32,7 @@ router.put('/:id',
         .custom( value => value > 0).withMessage('Please enter a valid item price'),
     body('availability')
         .isBoolean().withMessage('Availability must be a boolean'),
+
     handleInputErrors,
     updateItem
 )
@@ -47,8 +48,9 @@ router.patch('/:id',
         .custom( value => value > 0).withMessage('Please enter a valid item price'),
     body('availability')
         .isBoolean().withMessage('Availability must be a boolean'),
-    updateAvailability
 
+    handleInputErrors,
+    updateAvailability
 )
 
 router.delete('/:id',
