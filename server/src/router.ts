@@ -11,9 +11,9 @@ router.get('/',
 
 router.post('/', 
     body('name')
-        .notEmpty().withMessage('The menu item must have a name'),
+        .notEmpty().withMessage('The item must have a name'),
     body('price')
-        .isNumeric().withMessage('Please enter a valid menu item price')
+        .isNumeric().withMessage('Please enter a valid item price')
         .custom( value => value > 0).withMessage(('Please enter a valid item price')),
     
     handleInputErrors,
