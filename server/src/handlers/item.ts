@@ -1,4 +1,5 @@
 import { Request, Response } from "express"
+import Item from "../models/Item"
 
 export const getItems = async (req: Request, res: Response) => {
     res.send('FROM GET ITEMS')
@@ -9,7 +10,8 @@ export const getItemById = async (req: Request, res: Response) => {
 }
 
 export const createItem = async (req: Request, res: Response) => {
-    res.send('FROM CREATE ITEM')
+    const product = await Item.create(req.body)
+    res.status(201).json({ data: product })
 }
 
 export const updateItem = async (req : Request, res : Response) => {
