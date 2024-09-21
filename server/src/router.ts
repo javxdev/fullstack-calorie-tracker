@@ -1,14 +1,26 @@
 import { Router } from "express"
-import { createItem, deleteItem, getItems, updateAvailability, updateItem } from "./handlers/item"
+import { createItem, deleteItem, getItemById, getItems, updateAvailability, updateItem } from "./handlers/item"
 import { body, param } from "express-validator"
 import { handleInputErrors } from "./middleware"
 
 const router = Router()
 
+// GET ALL ITEMS
 router.get('/', 
     getItems
 )
 
+// GET A SINGLE ITEM
+router.get('/:id',
+    param('id')
+        .isInt().withMessage('ID not valid')
+        .custom( value => value > 0 ).withMessage('ID must be a positive integer'),
+
+    handleInputErrors,
+    getItemById
+)
+
+// CREATE AN ITEM
 router.post('/', 
     body('name')
         .notEmpty().withMessage('The item must have a name'),
@@ -20,6 +32,7 @@ router.post('/',
     createItem
 )
 
+// UPDATE AN ITEM
 router.put('/:id',
     param('id').isInt().withMessage('ID not valid'),
     
@@ -37,6 +50,7 @@ router.put('/:id',
     updateItem
 )
 
+// UPDATE ITEM AVAILABILITY
 router.patch('/:id', 
     param('id').isInt().withMessage('ID not valid'),
     body('name')
@@ -53,6 +67,7 @@ router.patch('/:id',
     updateAvailability
 )
 
+// DELETE AN ITEM
 router.delete('/:id',
     param('id').isInt().withMessage('ID not valid'),
     
