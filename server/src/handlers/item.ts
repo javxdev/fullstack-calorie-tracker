@@ -2,7 +2,10 @@ import { Request, Response } from "express"
 import Item from "../models/Item"
 
 export const getItems = async (req: Request, res: Response) => {
-    res.send('FROM GET ITEMS')
+    const products = await Item.findAll({
+        order: [['id', 'ASC']]
+    })
+    res.status(200).json({ data: products })
 }
 
 export const getItemById = async (req: Request, res: Response) => {
