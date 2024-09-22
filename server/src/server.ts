@@ -17,6 +17,6 @@ connectDB()
 
 server.use(express.json())
 
-server.use('/api/items', router)
+server.use('/api/activities', router)
 
 export default server
