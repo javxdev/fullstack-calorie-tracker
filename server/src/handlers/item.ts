@@ -1,30 +1,26 @@
 import { Request, Response } from "express"
-import Item from "../models/Item"
+import Activity from "../models/Activity"
 
-export const getItems = async (req: Request, res: Response) => {
-    const products = await Item.findAll({
+export const getActivities = async (req: Request, res: Response) => {
+    const activities = await Activity.findAll({
         order: [['id', 'ASC']]
     })
-    res.status(200).json({ data: products })
+    res.status(200).json({ data: activities })
 }
 
-export const getItemById = async (req: Request, res: Response) => {
-    res.send('FROM GET ITEM BY ID')
+export const getActivityById = async (req: Request, res: Response) => {
+    res.send('FROM GET ACTIVITY BY ID')
 }
 
-export const createItem = async (req: Request, res: Response) => {
-    const product = await Item.create(req.body)
-    res.status(201).json({ data: product })
+export const createActivity = async (req: Request, res: Response) => {
+    const activity = await Activity.create(req.body)
+    res.status(201).json({ data: activity })
 }
 
-export const updateItem = async (req : Request, res : Response) => {
-    res.send('FROM UPDATE ITEM')
+export const updateActivity = async (req : Request, res : Response) => {
+    res.send('FROM UPDATE ACTIVITY')
 }
 
-export const updateAvailability = async (req : Request, res : Response) => {
-    res.send('FROM UPDATE AVAILABILITY')
-}
-
-export const deleteItem = async (req: Request, res: Response) => {
-    res.send('FROM DELETE ITEM')
+export const deleteActivity = async (req: Request, res: Response) => {
+    res.send('FROM DELETE ACTIVITY')
 }
