@@ -17,14 +17,14 @@ export const useActivityStore = create<ActivityStore>()(
             activities: [],
             activeId: 0,
             fetchActivities: async () => {
-                const activities = await getActivities();
+                const activities = await getActivities()
                 set(() => ({
                     activities
                 }));
             },
             addNewActivity: async (newActivity: Activity) => {
                 await addActivity(newActivity);
-                const updatedActivities = await getActivities();
+                const updatedActivities = await getActivities()
                 set(() => ({
                     activities: updatedActivities,
                     activeId: 0
